@@ -3,8 +3,8 @@ package cmd
 import (
 	"strings"
 
-	"../pkg/domain"
-	"../pkg/shared"
+	"github.com/devMiguelFerrer/ys/pkg/domain"
+	"github.com/devMiguelFerrer/ys/pkg/shared"
 )
 
 func generateDomain(recipes []shared.Recipe) {

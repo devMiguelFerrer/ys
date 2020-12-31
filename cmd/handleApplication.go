@@ -3,8 +3,8 @@ package cmd
 import (
 	"strings"
 
-	"../pkg/application"
-	"../pkg/shared"
+	"github.com/devMiguelFerrer/ys/pkg/application"
+	"github.com/devMiguelFerrer/ys/pkg/shared"
 )
 
 func generateApplication(recipes []shared.Recipe) {

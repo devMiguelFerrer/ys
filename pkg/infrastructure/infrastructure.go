@@ -3,7 +3,7 @@ package infrastructure
 import (
 	"fmt"
 
-	"../shared"
+	"github.com/devMiguelFerrer/ys/pkg/shared"
 )
 
 // GenerateController method create ADD Use Case

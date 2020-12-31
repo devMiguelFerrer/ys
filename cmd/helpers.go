@@ -7,7 +7,7 @@ import (
 	"strings"
 	"unicode"
 
-	"../pkg/shared"
+	"github.com/devMiguelFerrer/ys/pkg/shared"
 	"github.com/spf13/viper"
 )
 
