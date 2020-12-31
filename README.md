@@ -1,2 +1,2 @@
-# YES SIR (ys)
-CLI to Typescript
+# YES, SIR!!! 🎩 (ys)
+CLI to build templates for Typescript.
