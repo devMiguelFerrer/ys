@@ -3,8 +3,8 @@ package cmd
 import (
 	"strings"
 
-	"../pkg/infrastructure"
-	"../pkg/shared"
+	"github.com/devMiguelFerrer/ys/pkg/infrastructure"
+	"github.com/devMiguelFerrer/ys/pkg/shared"
 )
 
 func generateInfrasctructure(recipes []shared.Recipe, selectedRepository string) {

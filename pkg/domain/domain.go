@@ -3,7 +3,7 @@ package domain
 import (
 	"fmt"
 
-	"../shared"
+	"github.com/devMiguelFerrer/ys/pkg/shared"
 	"github.com/spf13/viper"
 )
 

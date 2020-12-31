@@ -1,8 +1,6 @@
 package application
 
-import (
-	"../shared"
-)
+import "github.com/devMiguelFerrer/ys/pkg/shared"
 
 // GenerateAdd method create ADD Use Case
 func GenerateAdd(recipe []shared.Recipe) string {
