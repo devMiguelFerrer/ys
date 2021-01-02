@@ -1,8 +1,49 @@
 package infrastructure
 
-func handleMongooseModel() string {
-	// TODO:
-	return ``
+func handleMongooseModel(columns string) string {
+	repositoryModel := `import * as mongoose from "mongoose";
+import { I__name__ } from "../../../Domain";
+
+interface __name__Doc extends mongoose.Document, I__name__ {
+	id: string;
+	username: string;
+	group_id: string;
+}
+
+type __name__Model = mongoose.Model<__name__Doc>
+
+const __var__Schema = new mongoose.Schema<I__name__>(
+	{
+		id_user: {
+			type: String,
+			required: true
+		},
+		username: {
+			type: String,
+			required: true
+		},
+		group_id: {
+			type: String,
+			required: true
+		},
+`
+	repositoryModel += columns
+	repositoryModel += `  },
+	{
+		toJSON: {
+			transform(doc, ret) {
+				delete ret.__v;
+				ret.id = ret._id;
+			}
+		}
+	}
+);
+
+const __name__Model = mongoose.model<__name__Doc, __name__Model>("__var__", __var__Schema);
+
+export { __name__Model };
+`
+	return repositoryModel
 }
 
 func handleMongooseCriteria() string {

@@ -6,6 +6,16 @@ import (
 	"github.com/devMiguelFerrer/ys/pkg/shared"
 )
 
+var (
+	mongooseTypes = map[string]string{
+		"string":  "String",
+		"number":  "Number",
+		"date":    "Date",
+		"boolean": "Boolean",
+		"array":   "Array",
+	}
+)
+
 // GenerateController method create ADD Use Case
 func GenerateController(recipe []shared.Recipe) string {
 	return shared.ReplaceByRecipe(baseController(), recipe)
@@ -36,7 +46,7 @@ func GenerateTypeORMRepository(recipe []shared.Recipe) string {
 
 // GenerateMongooseModel Mongoose repository
 func GenerateMongooseModel(fileLoaded map[string]interface{}, recipe []shared.Recipe) string {
-	base := handleMongooseModel()
+	base := handleMongooseModel(generateMongooseColumns(fileLoaded))
 
 	// base += generateMongooseColumns(fileLoaded)
 	return shared.ReplaceByRecipe(base, recipe)
@@ -64,4 +74,16 @@ func generateTypeORMColumns(rawColumns map[string]interface{}) string {
 		formatedConstructor += fmt.Sprintln("    this." + k + " = " + "__var__." + k)
 	}
 	return formatedColumns + formatedConstructor + "  }\n}\n"
+}
+
+func generateMongooseColumns(rawColumns map[string]interface{}) string {
+	formatedColumns := ""
+
+	for k, v := range rawColumns {
+		formatedColumns += "	  " + k + ": {\n"
+		formatedColumns += fmt.Sprintln("			type: " + mongooseTypes[fmt.Sprintf("%v", v)] + ",")
+		formatedColumns += "			required: true\n"
+		formatedColumns += "		},\n"
+	}
+	return formatedColumns
 }

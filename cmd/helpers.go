@@ -12,6 +12,7 @@ import (
 )
 
 func createDirectory(path string) {
+	fmt.Println(path)
 	if err := os.MkdirAll(path, os.ModePerm); err != nil {
 		panic("Error: createDirs -> " + path)
 	}
@@ -46,7 +47,7 @@ func handleGlobalVars(args []string) []shared.Recipe {
 	varName = shared.ConvertToVar(className)
 	routeName = convertToRoute(className)
 	splitted = removeIndex(splitted, len(splitted)-1)
-	fullPath = strings.Join(splitted, "/")
+	partialPath = strings.Join(splitted, "/")
 
 	return []shared.Recipe{
 		{Key: name, Value: className},
