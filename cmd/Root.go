@@ -34,7 +34,9 @@ func Execute() {
 	var RootCmd = &cobra.Command{
 		Use:   "ys",
 		Short: "<ys> is a CLI to generate templates of code ",
-		Long:  ` <Yes, Sir!> ` + string('🎩') + ` (ys) will help you get more done in less time. ` + string('🤖'),
+		Long:  `<Yes, Sir!> ` + string('🎩') + ` (ys) will help you get more done in less time. ` + string('🤖'),
+		Example: `  ys create [ResourceName] -e [EntityFile] -r [ModelType]
+  ys create CustomTask -e config.json -r typeorm`,
 	}
 	RootCmd.AddCommand(cmdCreate, cmdGenerate)
 	// cmdCreate.AddCommand(cmdBack)
