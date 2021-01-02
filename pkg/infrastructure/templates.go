@@ -16,7 +16,7 @@ const __var__Route = '/__route__';
 
 router.get(__var__Route, async (req: express.Request, res: express.Response) => {
     try {
-        const get__name__ = new Get__name__(new __name__Repository(), new __name__Criteria(req.query));
+        const get__name__ = new Get__name__(new __name__Repository(), new __name__Criteria(req.query as { filter: string } ));
         const __var__ = await get__name__.dispatch();
 
         res.json(__var__);
@@ -55,7 +55,7 @@ router.put(__var__Route, async (req: express.Request, res: express.Response) => 
 
 router.delete(__var__Route, async (req: express.Request, res: express.Response) => {
     try {
-        const remove__name__ = new Remove__name__(new __name__Repository(), req.query.id);
+        const remove__name__ = new Remove__name__(new __name__Repository(), req.query.id as string);
         await remove__name__.dispatch();
 
         res.json({ message: '__name__ remove success' });

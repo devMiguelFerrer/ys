@@ -38,7 +38,6 @@ func Execute() {
 		Example: `  ys create [ResourceName] -e [EntityFile] -r [ModelType]
   ys create CustomTask -e config.json -r typeorm`,
 	}
-	RootCmd.AddCommand(cmdCreate, cmdGenerate)
-	// cmdCreate.AddCommand(cmdBack)
+	RootCmd.AddCommand(cmdCreate, cmdGenerate, cmdVersion)
 	RootCmd.Execute()
 }

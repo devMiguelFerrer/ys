@@ -8,9 +8,6 @@ import { I__name__ } from '../../../Domain';
 
 @Entity('__var__')
 export class __name__Model implements I__name__ {
-	@PrimaryGeneratedColumn()
-	id: number;
-
 `
 }
 
@@ -51,24 +48,24 @@ export class __name__Repository implements I__name__Repository {
 	constructor() {}
 
 	async add(__var__: I__name__): Promise<void> {
-		await getConnection('mysql-typeorm').getRepository(__name__Model).save(__var__);
+		await getConnection().getRepository(__name__Model).save(__var__);
 		return;
 	}
 
 	async update(updated__name__: I__name__): Promise<void> {
-		let old__name__ = await getConnection('mysql-typeorm').getRepository(__name__Model).findOne(updated__name__.id);
+		let old__name__ = await getConnection().getRepository(__name__Model).findOne(updated__name__.id);
 		old__name__ = { ...old__name__, ...updated__name__ };
-		await getConnection('mysql-typeorm').getRepository(__name__Model).save(old__name__);
+		await getConnection().getRepository(__name__Model).save(old__name__);
 		return;
 	}
 
 	async remove(id: string): Promise<void> {
-		await getConnection('mysql-typeorm').getRepository(__name__Model).delete(id);
+		await getConnection().getRepository(__name__Model).delete(id);
 		return;
 	}
 
 	async query(criteria: ICriteria): Promise<{ data: I__name__[]; count: number }> {
-		const queryBuilder = getConnection('mysql-typeorm')
+		const queryBuilder = getConnection()
 			.getRepository(__name__Model)
 			.createQueryBuilder('__name__');
 		
