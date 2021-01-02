@@ -9,7 +9,7 @@ import (
 
 func generateInfrasctructure(recipes []shared.Recipe, selectedRepository string) {
 
-	infrastructurePath := fullPath + "/" + className + "/Infrastructure"
+	infrastructurePath := fullPath + "/Infrastructure"
 
 	createDirectory(infrastructurePath + "/persistence/" + selectedDB)
 	createDirectory(infrastructurePath + "/controllers")

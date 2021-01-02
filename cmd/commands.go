@@ -16,7 +16,7 @@ var cmdCreate = &cobra.Command{
 		recipes := handleGlobalVars(args)
 		globalEntity = loadConfigFile(selectedInterface)
 
-		createDirectory(fullPath + "/" + className)
+		createDirectory(fullPath)
 		generateDomain(recipes)
 		generateApplication(recipes)
 		generateInfrasctructure(recipes, selectedDB)
