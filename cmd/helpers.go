@@ -12,7 +12,6 @@ import (
 )
 
 func createDirectory(path string) {
-	fmt.Println(path)
 	if err := os.MkdirAll(path, os.ModePerm); err != nil {
 		panic("Error: createDirs -> " + path)
 	}

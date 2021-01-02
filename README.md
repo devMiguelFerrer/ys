@@ -26,5 +26,11 @@ ys create src/CustomTask -e config.json -r mongoose
   ┃ ┗ 📃CustomTask.ts
   ┗ 📂Infrastructure
     ┣ 📂Controllers
+    ┃ ┗ 📃customTaskController.ts
     ┗ 📂Persistence
+      ┗ 📂[typeorm || mongoose]
+        ┣ 📃index.ts
+        ┣ 📃customTaskCriteria.ts
+        ┣ 📃customTaskModel.ts
+        ┗ 📃customTaskRepository.ts
 ```
