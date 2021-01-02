@@ -1,30 +1,29 @@
 # YES, SIR!!! 🎩 (ys)
-####CLI to build templates for Typescript.
+CLI to build templates for Typescript.
 
 ### Commands
 ```
 ys create [ResourceName] -e [EntityFile] -r [ModelType]
 ```
 ```
-ys create src/CustomTask -e config.json -r mongoose
+ys create CustomTask -e config.json -r mongoose
 ```
 ### Folder Structure
 ```
-📦src
-┗ 🗂️CustomTask
-  ┣ 📂Application
+📦CustomTask
+  ┣ 🗂️Application
   ┃ ┣ 📃addCustomTask.ts
   ┃ ┣ 📃getCustomTask.ts
   ┃ ┣ 📃index.ts
   ┃ ┣ 📃removeCustomTask.ts
   ┃ ┗ 📃updateCustomTask.ts
-  ┣ 📂Domain
+  ┣ 🗂️Domain
   ┃ ┣ 📃ICriteria.ts
   ┃ ┣ 📃ICustomTask.ts
   ┃ ┣ 📃ICustomTaskRepository.ts
   ┃ ┣ 📃index.ts
   ┃ ┗ 📃CustomTask.ts
-  ┗ 📂Infrastructure
+  ┗ 🗂️Infrastructure
     ┣ 📂Controllers
     ┃ ┗ 📃customTaskController.ts
     ┗ 📂Persistence
