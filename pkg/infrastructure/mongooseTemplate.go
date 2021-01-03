@@ -47,7 +47,6 @@ export { __name__Model };
 }
 
 func handleMongooseCriteria() string {
-	// TODO:
 	return `import { ICriteria, IFilter } from "../../../Domain";
 
 enum OperatorMongoose {

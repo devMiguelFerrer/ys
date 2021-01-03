@@ -66,8 +66,12 @@ func generateTypeORMColumns(rawColumns map[string]interface{}) string {
 	formatedColumns := ""
 	formatedConstructor := "  constructor(__var__: I__name__) {\n"
 
-	for k, v := range rawColumns {
-		formatedColumns += "  @Column()\n"
+	for k, v := range rawColumns { // TODO: remove constructor
+		if k == "id" {
+			formatedColumns += "  @PrimaryGeneratedColumn()\n"
+		} else {
+			formatedColumns += "  @Column()\n"
+		}
 		formatedColumns += fmt.Sprintln("  "+k+":", v)
 		formatedColumns += "\n"
 

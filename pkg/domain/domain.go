@@ -40,7 +40,7 @@ func GenerateClass(fileLoaded map[string]interface{}, name string) string {
 func GenerateInterface(fileLoaded map[string]interface{}, name string) string {
 	interfaceFormated := "export interface I" + name + " {\n"
 	for k, v := range fileLoaded {
-		interfaceFormated += fmt.Sprintln("  "+k+":", v)
+		interfaceFormated += fmt.Sprintln("  " + k + ": " + fmt.Sprintf("%v", v) + ";")
 	}
 	return interfaceFormated + "}\n"
 }

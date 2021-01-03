@@ -24,10 +24,8 @@ func generateInfrasctructure(recipes []shared.Recipe, selectedRepository string)
 	case typeORM:
 		generateInfrasctructureTypeORM(infrastructurePath, recipes)
 	case mongoose:
-		// TODO:
 		generateInfrasctructureMongoose(infrastructurePath, recipes)
 	default:
-		// TODO:
 		generateInfrasctructureTypeORM(infrastructurePath, recipes)
 	}
 }
