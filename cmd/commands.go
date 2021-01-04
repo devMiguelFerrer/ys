@@ -27,8 +27,8 @@ var cmdCreate = &cobra.Command{
 
 var cmdGenerate = &cobra.Command{
 	Use:   "generate",
-	Short: "Is in development " + string('🚷'),
-	Long:  `Is in development ` + string('🚷'),
+	Short: "It's in development " + string('🚷'),
+	Long:  `It's in development ` + string('🚷'),
 	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println(`Is in development ` + string('🚷'))
@@ -39,7 +39,6 @@ var cmdVersion = &cobra.Command{
 	Use:   "version",
 	Short: "Show the version " + string('📋'),
 	Long:  `Show the version ` + string('📋'),
-	// Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println(`version: 0.0.1 ` + string('📋'))
 	},

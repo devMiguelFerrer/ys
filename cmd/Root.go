@@ -12,21 +12,26 @@ const (
 )
 
 var (
-	selectedDB        string
-	selectedInterface string
-	className         string
-	varName           string
-	routeName         string
-	partialPath       string
-	fullPath          string
-	totalBytes        int64
-	globalEntity      map[string]interface{}
+	selectedDB          string
+	selectedInterface   string
+	selectedValidations bool
+	selectedTests       bool
+	className           string
+	varName             string
+	routeName           string
+	partialPath         string
+	fullPath            string
+	totalBytes          int64
+	globalEntity        map[string]interface{}
 )
 
 // Execute main function
 func Execute() {
-
 	cmdCreate.Flags().StringVarP(&selectedDB, "repository", "r", "typeorm", "mongoose OR typeorm")
+
+	cmdCreate.Flags().BoolVarP(&selectedValidations, "validations", "v", false, `It's in development `+string('🚷'))
+
+	cmdCreate.Flags().BoolVarP(&selectedTests, "tests", "t", false, `It's in development `+string('🚷'))
 
 	cmdCreate.Flags().StringVarP(&selectedInterface, "entity", "e", "", "entity path like ./src/entity.json")
 	cmdCreate.MarkFlagRequired("entity")
