@@ -64,4 +64,7 @@ func generateDomainWithVO(recipes []shared.Recipe) {
 
 	str = domain.GenerateDomainBaseValidations()
 	saveFile(domainVOPath+"/BaseTypes.ts", strings.NewReader(str))
+
+	str = domain.GenerateDomainExtendedValidations(globalEntity, recipes)
+	saveFile(domainVOPath+"/ExtendedTypes.ts", strings.NewReader(str))
 }
