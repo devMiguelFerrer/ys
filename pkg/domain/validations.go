@@ -1,7 +1,7 @@
 package domain
 
 func handleValidationString() string {
-	return `class ValidationString {
+	return `export class ValidationString {
 	value: string;
 
 	constructor(value: string) {
@@ -23,7 +23,7 @@ func handleValidationString() string {
 }
 
 func handleValidationNumber() string {
-	return `class ValidationNumber {
+	return `export class ValidationNumber {
 	value: number;
 
 	constructor(value: number) {
@@ -45,7 +45,7 @@ func handleValidationNumber() string {
 }
 
 func handleValidationBoolean() string {
-	return `class ValidationBoolean {
+	return `export class ValidationBoolean {
 	value: boolean;
 
 	constructor(value: boolean) {

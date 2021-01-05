@@ -22,6 +22,11 @@ export interface ICriteria {
   limit: number;
 }
 `
+const (
+	valString  = "string"
+	valNumber  = "number"
+	valBoolean = "boolean"
+)
 
 // GenerateClass create the Class to Domain
 func GenerateClass(fileLoaded map[string]interface{}, name string) string {
@@ -104,16 +109,50 @@ func GenerateDomainBaseValidations() string {
 
 // GenerateDomainExtendedValidations method create Extended Validations by properties
 func GenerateDomainExtendedValidations(fileLoaded map[string]interface{}, recipe []shared.Recipe) string {
-	const base = `import { ValidationBoolean, ValidationNumber, ValidationString } from '.';\n\n`
-	classProperties := ""
+	base := "import { ValidationBoolean, ValidationNumber, ValidationString } from './BaseTypes';\n"
 
 	for k, v := range fileLoaded {
-		classProperties += `export class ` + strings.Title(k) + ` extends TODO {
-	constructor(value: ` + fmt.Sprintf("%v", v) + `) {
-		super(value);
-		this.value = value;`
-		classProperties += fmt.Sprintln("  " + k + ": " + fmt.Sprintf("%v", v) + ";")
+		switch v {
+		case valString:
+			base += generateValidationString(k, v)
+		case valNumber:
+			base += generateValidationNumber(k, v)
+		case valBoolean:
+			base += generateValidationBoolean(k, v)
+		default:
+			base += generateValidationString(k, v)
+		}
 	}
 
 	return shared.ReplaceByRecipe(base, recipe)
+}
+
+func generateValidationString(k string, v interface{}) string {
+	base := "\nexport class " + strings.Title(k) + ` extends ValidationString {
+	constructor(value: ` + fmt.Sprintf("%v", v) + `) {
+		super(value);
+		if (this.min(1) || this.max(50)) {
+			throw new Error('The value should be a number');
+		}`
+	base += "\n  }\n}\n"
+	return base
+}
+
+func generateValidationNumber(k string, v interface{}) string {
+	base := "\nexport class " + strings.Title(k) + ` extends ValidationNumber {
+	constructor(value: ` + fmt.Sprintf("%v", v) + `) {
+		super(value);
+		if (this.min(0) || this.max(999999)) {
+			throw new Error('The value should be a number');
+		}`
+	base += "\n  }\n}\n"
+	return base
+}
+
+func generateValidationBoolean(k string, v interface{}) string {
+	base := "\nexport class " + strings.Title(k) + ` extends ValidationBoolean {
+	constructor(value: ` + fmt.Sprintf("%v", v) + `) {
+		super(value);`
+	base += "\n  }\n}\n"
+	return base
 }
