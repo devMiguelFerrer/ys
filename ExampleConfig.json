@@ -2,5 +2,6 @@
   "firstName": "string",
   "lastName": "string",
   "age": "number",
-  "active": "boolean"
+  "active": "boolean",
+  "custom": "[]"
 }

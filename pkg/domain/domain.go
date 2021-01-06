@@ -44,8 +44,18 @@ func GenerateClass(fileLoaded map[string]interface{}, name string) string {
 
 // GenerateClassVO create the Class to Domain
 func GenerateClassVO(fileLoaded map[string]interface{}, name string) string {
+	index := 0
 	varName := shared.ConvertToVar(name)
-	classFormated := "import { I" + name + " } from '.';\n\n"
+	classFormated := "import { I" + name + " } from '.';\n"
+	classFormated += "import {"
+	for k := range fileLoaded {
+		if index > 0 {
+			classFormated += ","
+		}
+		classFormated += " " + strings.Title(k)
+		index++
+	}
+	classFormated += " } from './Validations/ExtendedTypes';\n\n"
 	classFormated += "export class " + name + " implements I" + name + " {\n"
 	classProperties := ""
 	classAssignations := "  constructor(" + varName + ": I" + name + ") {\n"
@@ -120,7 +130,7 @@ func GenerateDomainExtendedValidations(fileLoaded map[string]interface{}, recipe
 		case valBoolean:
 			base += generateValidationBoolean(k, v)
 		default:
-			base += generateValidationString(k, v)
+			base += generateValidationDefault(k, v)
 		}
 	}
 
@@ -153,6 +163,15 @@ func generateValidationBoolean(k string, v interface{}) string {
 	base := "\nexport class " + strings.Title(k) + ` extends ValidationBoolean {
 	constructor(value: ` + fmt.Sprintf("%v", v) + `) {
 		super(value);`
+	base += "\n  }\n}\n"
+	return base
+}
+
+func generateValidationDefault(k string, v interface{}) string {
+	base := "\nexport class " + strings.Title(k) + ` {
+	value: ` + fmt.Sprintf("%v", v) + `;
+	constructor(value: ` + fmt.Sprintf("%v", v) + `) {
+		this.value = value;`
 	base += "\n  }\n}\n"
 	return base
 }
