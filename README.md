@@ -8,6 +8,16 @@ ys create [ResourceName] -e [EntityFile] -r [ModelType]
 ```
 ys create CustomTask -e config.json -r mongoose
 ```
+### Example (Entity/Config).json file
+```
+{
+  "firstName": "string",
+  "lastName": "string",
+  "age": "number",
+  "active": "boolean",
+  "custom": "[]"
+}
+```
 ### Folder Structure
 ```
 📦CustomTask
