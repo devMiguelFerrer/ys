@@ -142,7 +142,7 @@ func generateValidationString(k string, v interface{}) string {
 	constructor(value: ` + fmt.Sprintf("%v", v) + `) {
 		super(value);
 		if (this.min(1) || this.max(50)) {
-			throw new Error('The value should be a number');
+			throw new Error('The value doesn't has a min/max permitted');
 		}`
 	base += "\n  }\n}\n"
 	return base
@@ -153,7 +153,7 @@ func generateValidationNumber(k string, v interface{}) string {
 	constructor(value: ` + fmt.Sprintf("%v", v) + `) {
 		super(value);
 		if (this.min(0) || this.max(999999)) {
-			throw new Error('The value should be a number');
+			throw new Error('The value doesn't has a min/max permitted');
 		}`
 	base += "\n  }\n}\n"
 	return base
